@@ -26,11 +26,6 @@ const askGuess = () => { rl.question('Please enter a Guess ', (answer) => {
 });
 };
 
-
-
-
-const secretNumber = 17;
-
 const checkGuess = (num) => {
 
     if(num > secretNumber) {
@@ -54,9 +49,18 @@ const checkGuess = (num) => {
     }
 }
 
-const randomInRange = (min, max) => {
+const randomInRange = () => {
 
-    
+    const minCeiled = Math.ceil(0);
+
+    const maxFloored = Math.floor(100);
+
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+
 }
+
+const secretNumber = randomInRange();
+
+console.log(secretNumber);
 
 askGuess();
