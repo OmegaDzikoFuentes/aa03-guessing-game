@@ -1,4 +1,4 @@
-# Guessing Game Project
+# Guessing Game Project by OmegaBDzikoFuentes
 
 It's time for our first non-spec guided project! There are many projects in the
 course, some of which will not have test cases for you to run. These types of
