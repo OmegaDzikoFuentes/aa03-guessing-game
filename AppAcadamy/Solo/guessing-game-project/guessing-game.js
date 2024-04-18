@@ -49,11 +49,11 @@ const checkGuess = (num) => {
     }
 }
 
-const randomInRange = () => {
+const randomInRange = (min, max) => {
 
-    const minCeiled = Math.ceil(0);
+    const minCeiled = Math.ceil(min);
 
-    const maxFloored = Math.floor(100);
+    const maxFloored = Math.floor(max);
 
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 
@@ -61,6 +61,21 @@ const randomInRange = () => {
 
 const secretNumber = randomInRange();
 
-console.log(secretNumber);
+const askRange = () => {
 
-askGuess();
+    // ask question one
+rl.question("Please enter a Max number ", firstAnswer => {
+    console.log(firstAnswer + " is your max.");
+
+  // ask question two
+  rl.question("Please enter Minimun number ", secondAnswer => {
+    console.log(secondAnswer + " is your min.");
+
+    console.log(`I'm thinking of number between ${secondAnswer} and ${firstAnswer}...`);
+
+    rl.close();
+});
+  });
+}
+
+askRange();
