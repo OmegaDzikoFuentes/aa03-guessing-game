@@ -3,6 +3,7 @@ const { stdin: input, stdout: output } = require('node:process');
 
 const rl = readline.createInterface({ input, output });
 
+let secretNumber;
 
 const askGuess = () => { rl.question('Please enter a Guess ', (answer) => {
   // TODO: check number passed in by  user with guess function
@@ -49,17 +50,17 @@ const checkGuess = (num) => {
     }
 }
 
-const randomInRange = (min, max) => {
+// const randomInRange = (min, max) => {
 
-    const minCeiled = Math.ceil(min);
+//     const minCeiled = Math.ceil(min);
 
-    const maxFloored = Math.floor(max);
+//     const maxFloored = Math.floor(max);
 
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+//     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 
-}
+// }
 
-const secretNumber = randomInRange();
+// const secretNumber = randomInRange();
 
 const askRange = () => {
 
@@ -73,9 +74,25 @@ rl.question("Please enter a Max number ", firstAnswer => {
 
     console.log(`I'm thinking of number between ${secondAnswer} and ${firstAnswer}...`);
 
-    rl.close();
+
+  const randomInRange = (min, max) => {
+
+    const minCeiled = Math.ceil(min);
+
+    const maxFloored = Math.floor(max);
+
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+
+}
+
+secretNumber = randomInRange(Number(secondAnswer), Number(firstAnswer));
+
+askGuess();
+
+
 });
   });
+
 }
 
 askRange();
