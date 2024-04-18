@@ -5,11 +5,17 @@ const rl = readline.createInterface({ input, output });
 
 let secretNumber;
 
+let numOfAttempts = 5;
+
 const askGuess = () => { rl.question('Please enter a Guess ', (answer) => {
   // TODO: check number passed in by  user with guess function
  if(!checkGuess(Number(answer))) {
 
     console.log("...try again");
+
+    numOfAttempts--;
+
+    console.log(`you have ${numOfAttempts} guesses left >__< `)
 
    askGuess();
 
@@ -20,6 +26,12 @@ const askGuess = () => { rl.question('Please enter a Guess ', (answer) => {
     checkGuess(Number(answer));
 
     console.log("You WiN!!!");
+
+    rl.close();
+
+ } else if(numOfAttempts === 0) {
+
+    console.log("You know what sexy, maybe next time ;) ")
 
     rl.close();
 
@@ -69,7 +81,7 @@ rl.question("Please enter a Max number ", firstAnswer => {
     console.log(firstAnswer + " is your max.");
 
   // ask question two
-  rl.question("Please enter Minimun number ", secondAnswer => {
+  rl.question("Please enter Minimum number ", secondAnswer => {
     console.log(secondAnswer + " is your min.");
 
     console.log(`I'm thinking of number between ${secondAnswer} and ${firstAnswer}...`);
